@@ -20,7 +20,9 @@ const postsController = {
         const criar = req.body
         let novoPost = await Post.create({
             texto: criar.texto,
-            usuarios_id: req.params.id
+            img: null,  // TODO saber se é obrigatório
+            usuarios_id: req.params.id,
+            n_likes: null
 
         })
         return res.json(novoPost)
