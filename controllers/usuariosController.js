@@ -19,7 +19,6 @@ const usuariosController = {
 
     // forma otimizada
     create: async (req, res) => {
-        const user = req.body
         let { nome, email, senha } = req.body;
         let novoUsuario = await Usuario.create({
             nome,
@@ -42,9 +41,9 @@ const usuariosController = {
     },
 
     delete: async (req, res) => {
-        
+        let { id } = req.params
         let deletarUsuario = await Usuario.destroy({
-            where: { id: req.params.id }
+            where: { id }
         })
         return res.json(deletarUsuario)
     }
