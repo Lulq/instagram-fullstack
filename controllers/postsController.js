@@ -7,6 +7,15 @@ const postsController = {
         return res.json(posts)
     },
 
+    show: async (req, res) => {
+        idUsuario = req.params.id
+        let mostrarPosts = await Post.findAll({
+            where: {usuarios_id: idUsuario}
+        })
+        return res.json(mostrarPosts)
+    },
+
+
     create: async (req, res) => {
         const criar = req.body
         let novoPost = await Post.create({
@@ -34,6 +43,8 @@ const postsController = {
         })
         return res.json(deletarPost)
     }
+    
+    
 }
 
 module.exports = postsController
