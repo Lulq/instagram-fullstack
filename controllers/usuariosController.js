@@ -7,16 +7,27 @@ const usuariosController = {
         return res.json(usuarios);
     },
     
+    // create: async (req, res) => {
+    //     const user = req.body
+    //     let novoUsuario = await Usuario.create({   
+    //         nome: user.nome,
+    //         email: user.email,
+    //         senha: user.senha
+    //     })
+    //     return res.json(novoUsuario)
+    // },
+
+    // forma otimizada
     create: async (req, res) => {
         const user = req.body
-        let novoUsuario = await Usuario.create({   
-            nome: user.nome,
-            email: user.email,
-            senha: user.senha
+        let { nome, email, senha } = req.body;
+        let novoUsuario = await Usuario.create({
+            nome,
+            email,
+            senha
         })
         return res.json(novoUsuario)
     },
-
     
     update: async (req, res) => {
         const alteracao = req.body

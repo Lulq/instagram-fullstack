@@ -7,4 +7,8 @@ router.post('/:id?', usuariosController.create)
 router.put('/:id?', usuariosController.update)
 router.delete('/:id', usuariosController.delete)
 
+//TODO
+// router.get('/perfil/:id', usuariosController.show);
+
+
 module.exports = router;
