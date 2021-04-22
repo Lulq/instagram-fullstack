@@ -10,6 +10,11 @@ const usuariosController = {
 
     registro : (req, res) => {
         return res.render('registro')
+
+    },
+
+    login: (req, res) => {
+        return res.render('login')
     },
     
     // create: async (req, res) => {
@@ -30,7 +35,7 @@ const usuariosController = {
             email,
             senha
         })
-        return res.json(novoUsuario)
+        return res.redirect('/usuarios/login')
     },
     
     update: async (req, res) => {
