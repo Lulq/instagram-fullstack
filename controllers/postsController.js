@@ -2,9 +2,11 @@ const { Post, sequelize } = require('../models')
 
 const postsController = {
     index: async (req, res) => {
-        let posts = await Post.findAll()
+        const posts = await Post.findAll({
+            include: ['usuario', 'comentarios', 'curtiu']
+        })
 
-        return res.json(posts)
+        return res.render('index', { listaPosts: posts } ) // index é o nome da view, e posts como listaposts
     },
 
     show: async (req, res) => {

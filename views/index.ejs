@@ -1,11 +1,76 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style-index.css">
+</head>
+<body class="post-index">
+    <header>
+        <img src="img/logo.png" alt="Instagram" class="logo">
+    </header>
+
+    <%  for (let post of listaPosts) { %> 
+        <article>
+        <div class="card">
+            <div class="post-owner">
+                <div class="usuario">
+                    <img src="img/avatar-example.png" alt="foto do usuário"> <!--TODO-->
+                    <strong><%= post.usuario.nome %> </strong>
+                    <!-- <p><strong>marchador.estrela.negra</strong></p> -->
+                </div>
+                <img class="more-details" src="img/icons/more-vertical.svg">
+                        
+            </div>
+            <div class="post-image">
+                <img src="<%= post.img %>" alt="">
+
+                <!-- <img src="img/publication_example2.jpg" title="miscelânea total"> -->
+            </div>
+            <div class="post">
+                <div class="post-text">
+                    <p><%= post.texto %> </p>    
+                    <!-- <p>Open the Gates!</p> -->
+
+                    <div class="likes">
+                        <img src="/img/icons/heart.svg" alt="coração dos likes">
+                        <!-- <strong>649 likes</strong> -->
+                        <%= post.n_likes  %> 
+                    </div>
+                    
+                    <strong>Postado no dia: 16/04/2020</strong>
+                    
+                </div>
+                <div class="comentarios">
+                    <ol>
+                    <% for (let comentario of post.comentarios) {%> 
+                        <li>
+                            <p><%= comentario.texto  %> </p>
+                        </li>
+                    <% } %>
+                    </ol>
+
+                 
+                    <!-- <p><strong>Geisiane</strong> Oi! Tô de olho     nesse bolinho de bacalhau aí!</p>
+                    <p><strong>Miguel</strong> Hendy! Libera pro    almoço!</p>
+                    <p><strong>Ludmylla</strong> Gente! Onde fica o mééén?</p>
+                    <p><strong>Demetryus</strong> Hendy! Posso mostrar o meu???</p>
+                    <p><strong>NGod</strong> ... </p>
+                    <p><strong>Matheus</strong> Vai ter Kahoot? </p>
+                    <p><strong>Ronin</strong> Vamos fazer uma pausinha pra beber uma aguinha? </p>
+                    <p><strong>Leda</strong> Quero caféee! </p>
+                    <p><strong>Gabriel</strong> Galera, tem alguem com o mic tá aberto aí, na moral! </p> -->
+                </div>
+            </div>
+            <div class="post-footer">
+                <input type="text" name="texto" placeholder="Adicione um comentário">
+                <button>Publicar</button>
+            </div>
+        </div>
+        </article>
+    <% } %> 
+    
+</body>
 </html>

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     );
     
     Comentario.associate = (models) => {
-        Comentario.belongsTo(models.Post, {as:"posts", foreignKey: "posts_id" })
+        Comentario.belongsTo(models.Post, { as: "post", foreignKey: "posts_id"})
     }
     return Comentario;
 }
