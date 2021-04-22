@@ -3,19 +3,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Instagram - Login</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
     
 <body>
     <main>
         <div class="banner">
-            <img src="img/banner-login.png" alt="Smartphones com demonstração do instagram">
+            <img src="/img/banner-login.png" alt="Smartphones com demonstração do instagram">
             <p>Cadastre-se para ver fotos dos seus amigos</p>
         </div>
         
         <div class="login">
-            <img src="img/logo.png" alt="Logo do Instagram" class="logo">
-            <form>
+            <img src="/img/logo.png" alt="Logo do Instagram" class="logo">
+
+            <!-- aqui que envia as informações da pagina prara o usuarios(rota/model/banco) -->
+            <form action="/usuarios" method="POST"> 
+                
                 <input type="name" name="nome" id="nome" placeholder="Digite seu nome">
                 <input type="email" name="email" id="email" placeholder="Digite seu email">
                 <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
