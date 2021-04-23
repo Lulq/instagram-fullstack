@@ -14,7 +14,8 @@ module.exports = async (req, res, next) => {
                 }else{
                     let user = await Usuario.findAll({ where: {email} } )
                     if(user.length){
-                        res.status(400).json({ erro: "E-mail já cadastrado" })
+                        res.status(400).json({erro: "Email já cadastrado"})
+                        return;
                     }else{
                         if(senha.length > 12){
                             res.status(400).json({ erro: "A senha deve conter no máximo 12 caracteres"})

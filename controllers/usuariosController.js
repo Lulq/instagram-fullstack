@@ -1,5 +1,6 @@
 const { response } = require('express');
 const { Usuario, sequelize } = require('../models');
+const bcrypt = require('bcryptjs')
 
 const usuariosController = {
     index: async (req, res) => {
@@ -16,6 +17,24 @@ const usuariosController = {
     login: (req, res) => {
         return res.render('login')
     },
+
+    auth: async (req, res) => {
+        const { email, senha } = req.body
+
+        const usuario = await Usuario.findOne({
+            where: { email }
+        })
+
+        if (usuario && bcrypt.compareSync(senha, usuario.senha)) {
+            req.session.usuarioLogado = usuario // criando atributo usuarioLogado na session
+            return res.redirect('/') // redirecionando para a pagina inicial
+            
+        }else {
+            return res.redirect('/usuarios/login')
+        }
+    },
+
+
     
     // create: async (req, res) => {
     //     const user = req.body
@@ -30,11 +49,15 @@ const usuariosController = {
     // forma otimizada
     create: async (req, res) => {
         let { nome, email, senha } = req.body;
+
+        const senhaCrypt = bcrypt.hashSync(senha, 10)  //recebe a senha e o salt
+
         let novoUsuario = await Usuario.create({
             nome,
             email,
-            senha
+            senha: senhaCrypt
         })
+
         return res.redirect('/usuarios/login')
     },
     

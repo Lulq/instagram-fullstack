@@ -13,6 +13,10 @@ router.get('/registro', usuariosController.registro)
 //rota para a view login
 router.get('/login', usuariosController.login)
 
+//rota para pegar as informações do loguin pra serem autenticadas
+router.post('/login', usuariosController.auth)
+
+
 // rota para criar usuário com validação do middleware
 router.post('/:id?', validarCadastro, usuariosController.create)
 

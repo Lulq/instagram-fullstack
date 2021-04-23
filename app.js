@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usuariosRouter = require('./routes/usuariosRouter');
 var postsRouter = require('./routes/postsRouter')
+const session = require('express-session')  //importação das sessions
 
 var app = express();
 
@@ -14,6 +15,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(session({ 
+  secret: "instagram-avanade",
+  saveUninitialized: true,
+  resave: true
+})) // conjuração das sessions
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
